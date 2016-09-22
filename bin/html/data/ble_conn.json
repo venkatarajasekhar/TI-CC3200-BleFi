@@ -1,0 +1,65 @@
+{
+	"num_devices": "__SL_G_NCO",
+	"devices": [
+		{
+			"dev_id": "__SL_G_DA1",
+			"dev_name": "__SL_G_DB1",
+			"bd_addr": "__SL_G_DC1",
+			"addr_type": "__SL_G_DD1"
+		},
+		{
+			"dev_id": "__SL_G_DA2",
+			"dev_name": "__SL_G_DB2",
+			"bd_addr": "__SL_G_DC2",
+			"addr_type": "__SL_G_DD2"
+		},
+		{
+			"dev_id": "__SL_G_DA3",
+			"dev_name": "__SL_G_DB3",
+			"bd_addr": "__SL_G_DC3",
+			"addr_type": "__SL_G_DD3"
+		},
+		{
+			"dev_id": "__SL_G_DA4",
+			"dev_name": "__SL_G_DB4",
+			"bd_addr": "__SL_G_DC4",
+			"addr_type": "__SL_G_DD4"
+		},
+		{
+			"dev_id": "__SL_G_DA5",
+			"dev_name": "__SL_G_DB5",
+			"bd_addr": "__SL_G_DC5",
+			"addr_type": "__SL_G_DD5"
+		},
+		{
+			"dev_id": "__SL_G_DA6",
+			"dev_name": "__SL_G_DB6",
+			"bd_addr": "__SL_G_DC6",
+			"addr_type": "__SL_G_DD6"
+		},
+		{
+			"dev_id": "__SL_G_DA7",
+			"dev_name": "__SL_G_DB7",
+			"bd_addr": "__SL_G_DC7",
+			"addr_type": "__SL_G_DD7"
+		},
+		{
+			"dev_id": "__SL_G_DA8",
+			"dev_name": "__SL_G_DB8",
+			"bd_addr": "__SL_G_DC8",
+			"addr_type": "__SL_G_DD8"
+		},
+		{
+			"dev_id": "__SL_G_DA9",
+			"dev_name": "__SL_G_DB9",
+			"bd_addr": "__SL_G_DC9",
+			"addr_type": "__SL_G_DD9"
+		},
+		{
+			"dev_id": "__SL_G_DA10",
+			"dev_name": "__SL_G_DB10",
+			"bd_addr": "__SL_G_DC10",
+			"addr_type": "__SL_G_DD10"
+		}
+	]
+}

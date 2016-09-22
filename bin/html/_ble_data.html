@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/style.css" >
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/com.TI.tokenPoller.js"></script>
+<script src="js/page-actions.js"></script>
+<script type="text/javascript">
+$(function() {
+	var deviceType = "__SL_G_V.D",
+		len = deviceType.length,
+		deviceTypeEnd = deviceType.substring(len-2,len),
+		cc3101Vals = ['10','11','13'];
+	if ($.inArray(deviceTypeEnd, cc3101Vals) > -1) {
+		$('span.deviceName').html('CC3200');
+	} else {
+		$('span.deviceName').html('CC3100');
+	}
+});
+</script>
+<title>Overview</title>
+</head>
+<link rel="stylesheet" type="text/css" href="simple_link.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+
+function Scanning()
+{
+	alert ("Please wait for 5s for scanning to be complete");		
+}
+
+function DisplayCharList()
+{
+	alert ("Press 'Display characteristics' button to see the list of characteristics");		
+}
+
+function DisplayChar()
+{
+	alert ("Press 'Display char value' button to see the value of characteristic");		
+}
+
+function LinkEst()
+{
+	alert ("Establishing link with Device");		
+}
+
+function LinkTerm()
+{
+	alert ("Terminating link with Device");		
+}
+
+
+</script>
+
+<body class="in-frame">
+<div class="header">
+  <div class="ti-logo"></div>
+  <div class="page-title"></div>
+  <div class="red-bar">SimpleLink&trade; Wi-Fi&reg; Family</div>
+  <div class="status-bar"> Current Status: <em>Offline</em></div>
+</div>
+<div class="tabs">
+  <ul>
+    <li class="" id="welcome"><a href="index.html"><span>Welcome</span></a></li>
+    <li class="" id="overview"><a href="overview.html"><span>Overview</span></a></li>
+    <li class="" id="about"><a href="about.html"><span>About</span></a></li>
+    <li class="" id="setup"><a href="setup.html"><span>Setup</span></a></li>
+    <li class="" id="bleDash"><a href="ble_dashboard.html"><span>BLE</span></a></li>
+    <li class="" id="portal"><a href="portal.html"><span>Developer's Portal</span></a></li>
+    
+  </ul>
+</div>
+<div class="content">
+  <div class="ble-dashboard">
+    <div class="tinyForm">
+	<form method="POST" name="BLE Configuration" action = "nothing" onsubmit="Scanning()">    
+    <table cellspacing="0">
+      <tr>
+        <td class="page-title" colspan="2"> BLE Settings </td>
+      </tr>
+      <tr>
+        <td class="label"> Start scanning for devices </td>
+        <td class="in-a-box"><input type="submit" name="__SL_P_PS1" value="Scan" /></td>
+      </tr>
+      </table>
+      </form>
+      </div>
+      <div class="tinyForm">
+      <form method="POST" name="BLE Configuration" action = "nothing" onsubmit="LinkEst()">
+      <table cellspacing="0">
+        <tr>
+	      <td class="label"> Enter Device Id to establish link: </td>
+    	  <td class="user-input"><input type="text" maxlength="1" name="__SL_P_PS2" /></td>        
+	    </tr>
+        <tr>
+          <td class="in-a-box" colspan=2><input type="submit" name="__SL_P_PS3" value="Establish Link" />
+      
+        </td>
+      
+        </tr>
+</table></form>
+</div>
+<div class="tinyForm">
+<form method="POST" name="BLE Configuration" action = "nothing" onsubmit="LinkTerm()">
+<table cellspacing="0">      
+      <tr>
+        <td class="empty-l-in-box" colspan=2></td>
+      </tr>
+        <tr>
+      
+      <td class="label"> Enter Device Id to terminate link: </td>
+        <td class="user-input">
+	      
+    	  <input type="text" maxlength="1" name="__SL_P_PS4" />
+        </td>
+      </tr>
+      <tr>
+        <td class="in-a-box" colspan=2  align=center>
+          <input type="submit" name="__SL_P_PS5" value="Terminate Link" />
+      	  
+        </td>
+      </tr>
+    </table>
+    </form>
+    </div>
+    <br>
+    <br>
+	<div class="scannedDevices">    
+        <!-- SCANNED AND CONNECTED DEVICES FORM -->
+        <form method="POST" name="BLE Configuration" action="display device scan status">
+            <input type="hidden" name="__SL_P_S.R" value="profiles_config.html" />
+            <table class="data" cellspacing="0">
+                <tr class="title">
+                    <td colspan="4">Scanned devices</td>
+                </tr>
+                <tr class="label">
+                    <td>Scan ID</td><td>Dev name</td><td>BD addr</td><td>Addr type</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_UA1" />__SL_G_UA1</td>
+                    <td>__SL_G_UB1</td>
+                    <td>__SL_G_UC1</td>
+                    <td>__SL_G_UD1</td>
+                </tr>
+                <tr class="grey">
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_UA2" />__SL_G_UA2</td>
+                    <td>__SL_G_UB2</td>
+                    <td>__SL_G_UC2</td>
+                    <td>__SL_G_UD2</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_UA3" />__SL_G_UA3</td>
+                    <td>__SL_G_UB3</td>
+                    <td>__SL_G_UC3</td>
+                    <td>__SL_G_UD3</td>
+                </tr>
+                <tr class="grey">
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_UA4" />__SL_G_UA4</td>
+                    <td>__SL_G_UB4</td>
+                    <td>__SL_G_UC4</td>
+                    <td>__SL_G_UD4</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_UA5" />__SL_G_UA5</td>
+                    <td>__SL_G_UB5</td>
+                    <td>__SL_G_UC5</td>
+                    <td>__SL_G_UD5</td>
+                </tr>
+                <tr><td colspan="4">&nbsp;</td></tr>
+                <tr class="title">
+                    <td colspan="4">Connected devices</td>
+                </tr>
+                <tr class="label">
+                    <td>Conn ID</td><td>Dev name</td><td>BD addr</td><td>Addr type</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_DA1" /> __SL_G_DA1</td>
+                    <td>__SL_G_DB1</td>
+                    <td>__SL_G_DC1</td>
+                    <td>__SL_G_DD1</td>
+                </tr>
+                <tr class="grey">
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_DA2" /> __SL_G_DA2</td>
+                    <td>__SL_G_DB2</td>
+                    <td>__SL_G_DC2</td>
+                    <td>__SL_G_DD2</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_DA3" /> __SL_G_DA3</td>
+                    <td>__SL_G_DB3</td>
+                    <td>__SL_G_DC3</td>
+                    <td>__SL_G_DD3</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><input type="submit" value="Display Scanned and Connected devices" /></td>
+                </tr>
+            </table>
+        </form>
+        <!-- SCANNED AND CONNECTED DEVICES FORM -->    
+    </div>
+    <br>
+    <br>
+    <table>
+      <form method="POST" name="BLE Configuration" action="nothing" onsubmit="DisplayCharList()")>
+        <tr> </tr>
+        <tr>
+          <td class="empty-l-in-box" colspan=2></td>
+        </tr>
+        <tr>
+          <td class="label"> Enter Connection Id to display the characteristics: </td>
+          <td class="user-input"><input type="text" maxlength="4" name="__SL_P_PS6" /></td>
+        </tr>
+        <tr>
+          <td class="in-a-box" colspan=2  align=center><input type="submit" name="__SL_P_PS7" value="Enter" /></td>
+        </tr>
+        <tr>
+          <td class="empty-l-in-box" colspan=2></td>
+        </tr>
+        <tr >
+          <td class = "border-l-top" colspan=2 ></td>
+        </tr>
+      </form>
+    </table>
+    <br>
+    <br>
+    <div class="devCharacteristics">
+    <!-- DEVICE CHARACTERISTICS FORM -->
+    <form method="POST" name="BLE Configuration" action="display device charateristics">
+ <input type="hidden" name="__SL_P_S.R" value="profiles_config.html">
+ <table cellspacing="0" class="data">
+   <tr class="title">
+     <td colspan="4">Device characteristics</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_001" />
+        __SL_G_001</td>
+     <td>__SL_G_002</td>
+     <td>__SL_G_003</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_004" />
+        __SL_G_004</td>
+     <td>__SL_G_005</td>
+     <td>__SL_G_006</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_007" />
+        __SL_G_007</td>
+     <td>__SL_G_008</td>
+     <td>__SL_G_009</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_010" />
+        __SL_G_010</td>
+     <td>__SL_G_011</td>
+     <td>__SL_G_012</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_013" />
+        __SL_G_013</td>
+     <td>__SL_G_014</td>
+     <td>__SL_G_015</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_016" />
+        __SL_G_016</td>
+     <td>__SL_G_017</td>
+     <td>__SL_G_018</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_019" />
+        __SL_G_019</td>
+     <td>__SL_G_020</td>
+     <td>__SL_G_021</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_022" />
+        __SL_G_022</td>
+     <td>__SL_G_023</td>
+     <td>__SL_G_024</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_025" />
+        __SL_G_025</td>
+     <td>__SL_G_026</td>
+     <td>__SL_G_027</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_028" />
+        __SL_G_028</td>
+     <td>__SL_G_029</td>
+     <td>__SL_G_030</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_031" />
+        __SL_G_031</td>
+     <td>__SL_G_032</td>
+     <td>__SL_G_033</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_034" />
+        __SL_G_034</td>
+     <td>__SL_G_035</td>
+     <td>__SL_G_036</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_037" />
+        __SL_G_037</td>
+     <td>__SL_G_038</td>
+     <td>__SL_G_039</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_040" />
+        __SL_G_040</td>
+     <td>__SL_G_041</td>
+     <td>__SL_G_042</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_043" />
+        __SL_G_043</td>
+     <td>__SL_G_044</td>
+     <td>__SL_G_045</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_046" />
+        __SL_G_046</td>
+     <td>__SL_G_047</td>
+     <td>__SL_G_048</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_049" />
+        __SL_G_049</td>
+     <td>__SL_G_050</td>
+     <td>__SL_G_051</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_052" />
+        __SL_G_052</td>
+     <td>__SL_G_053</td>
+     <td>__SL_G_054</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_055" />
+        __SL_G_055</td>
+     <td>__SL_G_056</td>
+     <td>__SL_G_057</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_058" />
+        __SL_G_058</td>
+     <td>__SL_G_059</td>
+     <td>__SL_G_060</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_061" />
+        __SL_G_061</td>
+     <td>__SL_G_062</td>
+     <td>__SL_G_063</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_064" />
+        __SL_G_064</td>
+     <td>__SL_G_065</td>
+     <td>__SL_G_066</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_067" />
+        __SL_G_067</td>
+     <td>__SL_G_068</td>
+     <td>__SL_G_069</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_070" />
+        __SL_G_070</td>
+     <td>__SL_G_071</td>
+     <td>__SL_G_072</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_073" />
+        __SL_G_073</td>
+     <td>__SL_G_074</td>
+     <td>__SL_G_075</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_076" />
+        __SL_G_076</td>
+     <td>__SL_G_077</td>
+     <td>__SL_G_078</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_079" />
+        __SL_G_079</td>
+     <td>__SL_G_080</td>
+     <td>__SL_G_081</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_082" />
+        __SL_G_082</td>
+     <td>__SL_G_083</td>
+     <td>__SL_G_084</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_085" />
+        __SL_G_085</td>
+     <td>__SL_G_086</td>
+     <td>__SL_G_087</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_088" />
+        __SL_G_088</td>
+     <td>__SL_G_089</td>
+     <td>__SL_G_090</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_091" />
+        __SL_G_091</td>
+     <td>__SL_G_092</td>
+     <td>__SL_G_093</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_094" />
+        __SL_G_094</td>
+     <td>__SL_G_095</td>
+     <td>__SL_G_096</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_097" />
+        __SL_G_097</td>
+     <td>__SL_G_098</td>
+     <td>__SL_G_099</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_100" />
+        __SL_G_100</td>
+     <td>__SL_G_101</td>
+     <td>__SL_G_102</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_103" />
+        __SL_G_103</td>
+     <td>__SL_G_104</td>
+     <td>__SL_G_105</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_106" />
+        __SL_G_106</td>
+     <td>__SL_G_107</td>
+     <td>__SL_G_108</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_109" />
+        __SL_G_109</td>
+     <td>__SL_G_110</td>
+     <td>__SL_G_111</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_112" />
+        __SL_G_112</td>
+     <td>__SL_G_113</td>
+     <td>__SL_G_114</td>
+   </tr>
+   <tr>
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_115" />
+        __SL_G_115</td>
+     <td>__SL_G_116</td>
+     <td>__SL_G_117</td>
+   </tr>
+   <tr class="grey">
+     <td><input type="checkbox" name="__SL_P_USD" value="__SL_G_118" />
+        __SL_G_118</td>
+     <td>__SL_G_119</td>
+     <td>__SL_G_120</td>
+   </tr>
+   <tr>
+     <td class="in-a-box" colspan=4><input type="submit" name="__SL_P_PS8" value="Display characteristics" /></td>
+   </tr>
+ </table>
+</form>
+    <!-- DEVICE CHARACTERISTICS FORM -->
+    </div>
+    <br>
+    <br>
+    <div class="tinyForm">
+      <form method="POST" name="Get Char value" action = "nothing" onsubmit="DisplayChar()")>
+	    <table>
+        <tr>
+          <td class="label"> Enter Connection Id: </td>
+          <td class="user-input"><input type="text" maxlength="4" name="__SL_P_PS9" /></td>
+        </tr>
+        <tr>
+          <td class="label"> Enter char string to get value: </td>
+          <td class="user-input"><input type="text" maxlength="20" name="__SL_P_P10" /></td>
+        </tr>
+        <tr>
+          <td class="in-a-box" colspan=2  align=center><input type="submit" name="__SL_P_P12" value="Enter " /></td>
+        </tr>
+	    </table>
+      </form>
+	</div>
+    <br>
+    <div class="tinyForm">
+    <form method="POST" name="BLE Configuration" action="display char value">
+   	<input type="hidden" name="__SL_P_S.R" value="profiles_config.html">
+    <table border="0"  width="100%" cellpadding="3" cellspacing="0">
+        <tr>
+        <td>
+        <input type="checkbox" name="__SL_P_USS" value="__SL_G_GC1" />
+        Char Value in hex = <b> __SL_G_GC1 </b>
+          </td>
+          </tr>
+        <tr>
+          <td class="in-a-box" colspan=5  align=center><input type="submit" value="Display char value" />
+        </td>
+        </tr>
+    </table>
+    </form>
+    </div>
+    <br>
+    <br>
+	<div class="tinyForm">
+      <form method="POST" name="BLE Set Char value" action = "nothing" onsubmit="on_submit()")>
+	    <table>
+        <tr>
+          <td class="label"> Enter Connection Id: </td>
+          <td class="user-input"><input type="text" maxlength="4" name="__SL_P_PS9" /></td>
+        </tr>
+        <tr>
+          <td class="label"> Enter char string to set value: </td>
+          <td class="user-input"><input type="text" maxlength="20" name="__SL_P_P10" /></td>
+        </tr>
+        <tr>
+          <td class="label"> Enter value: </td>
+          <td class="user-input"><input type="text" maxlength="20" name="__SL_P_P11" /></td>
+        </tr>
+        <tr>
+          <td class="in-a-box" colspan=2  align=center><input type="submit" name="__SL_P_P13" value="Set char value" /></td>
+        </tr>
+        <tr>
+          <td class="empty-l-in-box" colspan=2></td>
+        </tr>
+        <tr >
+          <td class = "border-l-top" colspan=2 ></td>
+        </tr>
+	    </table>
+      </form>
+    </div>       
+  </div>
+</div>
+</body>
+</html>
